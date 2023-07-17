@@ -21,25 +21,41 @@
 
     let score_class = "ml-3 font-bold text-lg scale "
 
-    let first_class = "fa-solid fa-trophy"
+    let first_class = "fa-solid fa-trophy "
     let second_class = "fa-solid fa-trophy ml-3 mr-3"
     let third_class = "fa-solid fa-trophy"
 
     let max_class = `fa-sharp fa-solid fa-award`
-    let min_class = `fa-solid fa-thumbs-down`
+    let min_class = `fa-solid fa-thumbs-up text-blue `
+
+    if(max < 1){
+        max_class += " text-green opacity-25"
+    }
+    if(min > 0){
+        min_class += " text-blue opacity-25 "
+    }
 
     if(first > 0){
         first_class += " text-gold"
     }
+    else{
+        first_class += " text-gold opacity-25"
+    }
     if(second > 0){
         second_class += " text-silver"
+    }
+    else{
+        second_class += " text-silver opacity-25"
     }
     if(third > 0){
         third_class += " text-bronze"
     }
+    else{
+        third_class += " text-bronze opacity-25"
+    }
 
     if(min > 0){
-        min_class += " text-red"
+        min_class += " text-blue"
     }
     if(max > 0){
         max_class += " text-green"
@@ -58,7 +74,7 @@
     remainingStars = 5 - fullStars - (half_star ? 1 : 0);
 </script>
 
-<div class="b-black card flex">
+<div class="b-black card flex shadow-xl">
         <i class="photo b-black fa-solid fa-user flex items-end justify-center "></i>
     <div class="grid ml-3 w-full pr-4">
         <div class="name uppercase font-bold">
@@ -67,7 +83,7 @@
         <div class="mt-auto flex justify-between" >
             <div class="bottom w-28 flex" title={reviews + " Avaliações"}>
                 {#each Array.from({ length: fullStars }) as _}
-                    <i class="fa-solid fa-star text-yellow-400"></i>
+                    <i class="fa-solid fa-star text-yellow-400 "></i>
                 {/each}
                 {#if half_star}
                     <i class="fa-solid fa-star-half-stroke text-yellow-400"></i>
@@ -141,6 +157,9 @@
     }
     .text-bronze{
         color: brown;
+    }
+    .text-blue{
+        color: rgb(0, 108, 197);
     }
     .bottom{
         display: flex;
